@@ -1,24 +1,38 @@
 import React from "react";
 import styled from "styled-components";
 import TalkItem from "../components/TalkItem";
-import {
-  mockChatList,
-  mockProfileImgUrl,
-  mockTalkList,
-} from "../constants/mock";
+import { mockChatList, mockTalkList } from "../constants/mock";
 import { useParams } from "react-router-dom";
 
 const ChatDetail = () => {
   const { id } = useParams();
   const { talks } = mockTalkList.find((talk) => talk.chatId === +id);
-  const { title, members } = mockChatList.find((chat) => chat.chatId === +id);
+  const { title, type, members } = mockChatList.find(
+    (chat) => chat.chatId === +id
+  );
+
+  const renderChatImg = () => {
+    if (type === "self" || type === "oneToOne") {
+      return (
+        <ChatImg>
+          <img src={members[0].profileImgUrl} alt="profile-img" />
+        </ChatImg>
+      );
+    } else if (type === "group" || type === "open") {
+      return (
+        <ChatImg className="many">
+          {members.map((member) => (
+            <img src={member.profileImgUrl} alt="profile-img" />
+          ))}
+        </ChatImg>
+      );
+    }
+  };
 
   return (
     <ChatDetailDiv>
       <ChatHeader>
-        <ChatImg>
-          <img src={mockProfileImgUrl} alt="chat-img" />
-        </ChatImg>
+        <ChatImg>{renderChatImg()}</ChatImg>
         <ChatHeaderContent>
           <span>{title}</span>
           <span>{members.length} 명</span>

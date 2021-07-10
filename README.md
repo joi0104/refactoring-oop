@@ -9,7 +9,7 @@
   - open의 경우 채팅방 이미지는 멤버들의 프로필 사진. 최대 4개까지만 보여줌. 채팅반 제목 옆에 `오픈` 이라는 배너 존재
 - [x] ChatDetail 페이지 만들고 Chat 썸네일 클릭시 ChagDetail 페이지로 이동하기
 - [x] mockChatDetailList 만들기
-- [] ChatDetail에서 Chat 이미지를 type에 따라 다르게 보여주기
+- [x] ChatDetail에서 Chat 이미지를 type에 따라 다르게 보여주기
   - self의 경우 채팅방 이미지는 나의 프로필사진
   - oneToOne의 경우 채팅방 이미지는 상대방의 프로필 사진
   - group와 open의 경우 채팅방 이미지는 멤버들의 프로필 사진. 최대 4개까지만 보여줌
