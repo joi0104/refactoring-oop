@@ -1,15 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import { mockProfileImgUrl } from "../constants/mock";
 
-const TalkItem = () => {
+const TalkItem = ({ talk }) => {
+  const { writer, comment } = talk;
   return (
     <TalkItemDiv>
       <TalkProfile>
-        <img src={mockProfileImgUrl} alt="profile-img" />
-        <span> 00님 </span>
+        <img src={writer.profileImgUrl} alt="profile-img" />
+        <span> {writer.name} </span>
       </TalkProfile>
-      <TalkContent>안녕하세요오오</TalkContent>
+      <TalkContent>{comment}</TalkContent>
     </TalkItemDiv>
   );
 };

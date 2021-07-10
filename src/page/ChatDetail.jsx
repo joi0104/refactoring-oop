@@ -1,9 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import TalkItem from "../components/TalkItem";
-import { mockProfileImgUrl } from "../constants/mock";
+import { mockProfileImgUrl, mockChatDetailList } from "../constants/mock";
+import { useParams } from "react-router-dom";
 
 const ChatDetail = () => {
+  const { id } = useParams();
+  const { title, members, talks } = mockChatDetailList.find(
+    (chat) => chat.id === +id
+  );
+
   return (
     <ChatDetailDiv>
       <ChatHeader>
@@ -11,15 +17,15 @@ const ChatDetail = () => {
           <img src={mockProfileImgUrl} alt="chat-img" />
         </ChatImg>
         <ChatHeaderContent>
-          <span>채팅방 이름</span>
-          <span>n 명</span>
+          <span>{title}</span>
+          <span>{members.length} 명</span>
         </ChatHeaderContent>
       </ChatHeader>
       <ChatBody>
         <TalkList>
-          <TalkItem />
-          <TalkItem />
-          <TalkItem />
+          {talks.map((talk) => (
+            <TalkItem talk={talk} />
+          ))}
         </TalkList>
       </ChatBody>
       <ChatFooter>
