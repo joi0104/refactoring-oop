@@ -1,64 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-
-const mockProfileImgUrl =
-  "https://lh3.googleusercontent.com/proxy/kCHnpFG5FXNijempsblpqqAhfhqvGHnBYBlRyC_5VUBFEX2qpuC0LHW90lCRFCXJUio-DWkfcC10ln57XLShPvUmJWcUANOSwfWjHIdMUTo7MynMVTOlQHhP";
-
-const mockChatList = [
-  {
-    type: "self",
-    title: "최진영",
-    createdAt: "2021-07-10",
-    updatedAt: "2021-07-10",
-    members: ["joi0104"],
-    lastComment: "진영아 듣고있니?",
-    membersProfileImgUrl: [mockProfileImgUrl],
-  },
-  {
-    type: "oneToOne",
-    title: "강지훈",
-    createdAt: "2021-07-10",
-    updatedAt: "2021-07-10",
-    members: ["joi0104", "kangji"],
-    lastComment: "앤티크 유니버스!",
-    membersProfileImgUrl: [mockProfileImgUrl, mockProfileImgUrl],
-  },
-  {
-    type: "group",
-    title: "강지훈, 김용래",
-    createdAt: "2021-07-10",
-    updatedAt: "2021-07-10",
-    members: ["joi0104", "kangji", "usage"],
-    lastComment: "졸업하고 싶다",
-    membersProfileImgUrl: [
-      mockProfileImgUrl,
-      mockProfileImgUrl,
-      mockProfileImgUrl,
-    ],
-  },
-  {
-    type: "open",
-    title: "오픈채팅방입니다",
-    createdAt: "2021-07-10",
-    updatedAt: "2021-07-10",
-    members: ["joi0104", "kangji", "usage"],
-    lastComment: "룰루랄라",
-    membersProfileImgUrl: [
-      mockProfileImgUrl,
-      mockProfileImgUrl,
-      mockProfileImgUrl,
-    ],
-  },
-];
+import { mockChatList } from "../constants/mock";
 
 const ChatList = () => {
   const renderThumbnail = (chat) => {
-    const { type, title, updatedAt, lastComment, membersProfileImgUrl } = chat;
+    const { type, title, updatedAt, lastComment, members } = chat;
     if (type === "self") {
       return (
         <ChatDiv>
           <ChatImg>
-            <img src={membersProfileImgUrl[0]} alt="self-thumbnail-img" />
+            <img src={members[0].profileImgUrl} alt="self-thumbnail-img" />
           </ChatImg>
           <ChatContent>
             <ChatTitle>
@@ -74,7 +25,10 @@ const ChatList = () => {
       return (
         <ChatDiv>
           <ChatImg>
-            <img src={membersProfileImgUrl[0]} alt="one_to_one_thumbnail_img" />
+            <img
+              src={members[0].profileImgUrl}
+              alt="one_to_one_thumbnail_img"
+            />
           </ChatImg>
           <ChatContent>
             <ChatTitle>
@@ -89,8 +43,8 @@ const ChatList = () => {
       return (
         <ChatDiv>
           <ChatImg className="many">
-            {membersProfileImgUrl.slice(0, 3).map((imgUrl) => (
-              <img src={imgUrl} alt="group_thumbnail_img" />
+            {members.slice(0, 3).map((member) => (
+              <img src={member.profileImgUrl} alt="group_thumbnail_img" />
             ))}
           </ChatImg>
           <ChatContent>
@@ -106,8 +60,8 @@ const ChatList = () => {
       return (
         <ChatDiv>
           <ChatImg className="many">
-            {membersProfileImgUrl.slice(0, 3).map((imgUrl) => (
-              <img src={imgUrl} alt="open_thumbnail_img" />
+            {members.slice(0, 3).map((member) => (
+              <img src={member.profileImgUrl} alt="open_thumbnail_img" />
             ))}
           </ChatImg>
           <ChatContent>
