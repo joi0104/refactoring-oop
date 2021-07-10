@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import { mockUserList } from "../constants/mock";
 
 const ChatItem = ({ chat }) => {
-  const { type, id, title, updatedAt, lastComment, members } = chat;
+  const { type, chatId, title, updatedAt, lastComment, members } = chat;
   const history = useHistory();
 
   const goChatDetail = () => {
-    history.push(`/${id}`);
+    history.push(`/${chatId}`);
   };
 
   const renderChat = () => {

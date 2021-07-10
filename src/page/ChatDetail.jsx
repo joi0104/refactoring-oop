@@ -1,14 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import TalkItem from "../components/TalkItem";
-import { mockProfileImgUrl, mockChatDetailList } from "../constants/mock";
+import {
+  mockChatList,
+  mockProfileImgUrl,
+  mockTalkList,
+} from "../constants/mock";
 import { useParams } from "react-router-dom";
 
 const ChatDetail = () => {
   const { id } = useParams();
-  const { title, members, talks } = mockChatDetailList.find(
-    (chat) => chat.id === +id
-  );
+  const { talks } = mockTalkList.find((talk) => talk.chatId === +id);
+  const { title, members } = mockChatList.find((chat) => chat.chatId === +id);
 
   return (
     <ChatDetailDiv>
