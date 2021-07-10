@@ -1,13 +1,21 @@
 import React from "react";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 import { mockChatList } from "../constants/mock";
 
 const ChatList = () => {
+  const history = useHistory();
+
+  const goChatDetail = (chatId) => {
+    history.push(`/${chatId}`);
+  };
+
   const renderThumbnail = (chat) => {
-    const { type, title, updatedAt, lastComment, members } = chat;
+    const { type, id, title, updatedAt, lastComment, members } = chat;
+
     if (type === "self") {
       return (
-        <ChatDiv>
+        <ChatDiv onClick={() => goChatDetail(id)}>
           <ChatImg>
             <img src={members[0].profileImgUrl} alt="self-thumbnail-img" />
           </ChatImg>
@@ -23,7 +31,7 @@ const ChatList = () => {
       );
     } else if (type === "oneToOne") {
       return (
-        <ChatDiv>
+        <ChatDiv onClick={() => goChatDetail(id)}>
           <ChatImg>
             <img
               src={members[0].profileImgUrl}
@@ -41,7 +49,7 @@ const ChatList = () => {
       );
     } else if (type === "group") {
       return (
-        <ChatDiv>
+        <ChatDiv onClick={() => goChatDetail(id)}>
           <ChatImg className="many">
             {members.slice(0, 3).map((member) => (
               <img src={member.profileImgUrl} alt="group_thumbnail_img" />
@@ -58,7 +66,7 @@ const ChatList = () => {
       );
     } else if (type === "open") {
       return (
-        <ChatDiv>
+        <ChatDiv onClick={() => goChatDetail(id)}>
           <ChatImg className="many">
             {members.slice(0, 3).map((member) => (
               <img src={member.profileImgUrl} alt="open_thumbnail_img" />

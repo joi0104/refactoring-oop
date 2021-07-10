@@ -1,4 +1,4 @@
-const mockProfileImgUrl =
+export const mockProfileImgUrl =
   "https://lh3.googleusercontent.com/proxy/kCHnpFG5FXNijempsblpqqAhfhqvGHnBYBlRyC_5VUBFEX2qpuC0LHW90lCRFCXJUio-DWkfcC10ln57XLShPvUmJWcUANOSwfWjHIdMUTo7MynMVTOlQHhP";
 
 export const mockChatList = [
@@ -91,3 +91,5 @@ export const mockChatList = [
     lastComment: "룰루랄라",
   },
 ];
+
+export const mockChatDetail = [];
