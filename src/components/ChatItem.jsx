@@ -47,7 +47,7 @@ const ChatItem = ({ chat }) => {
       return (
         <ChatDiv onClick={goChatDetail}>
           <ChatImg className="many">
-            {members.slice(0, 3).map((member) => (
+            {members.slice(0, 4).map((member) => (
               <img src={member.profileImgUrl} alt="group_chat_img" />
             ))}
           </ChatImg>
@@ -64,7 +64,7 @@ const ChatItem = ({ chat }) => {
       return (
         <ChatDiv onClick={goChatDetail}>
           <ChatImg className="many">
-            {members.slice(0, 3).map((member) => (
+            {members.slice(0, 4).map((member) => (
               <img src={member.profileImgUrl} alt="open_chat_img" />
             ))}
           </ChatImg>
